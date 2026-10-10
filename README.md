@@ -14,9 +14,10 @@ Semantic HTML, responsive CSS, and vanilla JavaScript. No build step or package 
 | --- | --- |
 | `index.html` | Portfolio content, navigation, and page metadata |
 | `styles.css` | Typography, colors, layouts, and responsive styles |
-| `script.js` | Navigation, scroll reveals, pointer highlights, and ASCII/photo portrait |
+| `script.js` | Navigation, scroll reveals, and pointer highlights |
 | `assets/ars-logo.svg`, `assets/ars-logo.png` | Custom ARS monogram in vector and transparent PNG formats |
-| `myImage.jpeg` | Profile photograph |
+| `assets/ascii-portrait.svg` | ASCII-only portrait with a closely framed neckline |
+| `myImage.jpeg` | Source photograph for the ASCII artwork; not displayed by the site |
 | `favicon.svg`, `favicon.ico` | Browser icons |
 | `apple-touch-icon.png` | Home-screen icon for Apple devices |
 | `general/Abhinav_Ranjan_Sulabh_Resume.pdf` | Current resume linked from the portfolio |
@@ -42,6 +43,6 @@ Open [localhost:8000](http://localhost:8000). Stop the server with `Ctrl+C`.
 
 ## Motion
 
-The site includes staggered entrances, scroll reveals, card highlights, and a detailed ASCII portrait with a photo toggle. A soft spotlight and cursor halo follow the pointer across the page and respond to links and buttons. Pointer effects run on devices with a fine pointer. Reduced-motion preferences disable animations and show the photograph by default; content and navigation also work without JavaScript.
+The site includes staggered entrances, scroll reveals, card highlights, and an ASCII-only portrait with a subtle scan animation. A soft spotlight and cursor halo follow the pointer across the page and respond to links and buttons. Pointer effects run on devices with a fine pointer. Reduced-motion preferences disable animations; the ASCII portrait, content, and navigation also work without JavaScript. Shared-link previews use the ARS monogram.
 
 GitHub Pages should serve the root of the configured publishing branch. Changes go live after they are pushed and the Pages deployment completes.

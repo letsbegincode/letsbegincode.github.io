@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 414" role="img" aria-labelledby="title desc">
+  <title id="title">ASCII portrait of Abhinav Ranjan Sulabh</title>
+  <desc id="desc">A gold character-art headshot with close framing and a softly faded neckline.</desc>
+  <defs>
+    <linearGradient id="neckFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.9" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <mask id="portraitFade"><rect width="360" height="414" fill="url(#neckFade)"/></mask>
+  </defs>
+  <g fill="#dfbd78" font-family="Courier New, monospace" font-weight="700" font-size="5" style="font-variant-ligatures:none" mask="url(#portraitFade)">
+    <text x="141" y="28.3" textLength="42" lengthAdjust="spacingAndGlyphs">@&amp;BSHh33MG#B&amp;@</text>
+    <text x="129" y="32.4" textLength="75" lengthAdjust="spacingAndGlyphs">BG5s;:,.........,;rAhG#B@</text>
+    <text x="120" y="36.5" textLength="102" lengthAdjust="spacingAndGlyphs">9hi........................:;is2GB</text>
+    <text x="111" y="40.6" textLength="123" lengthAdjust="spacingAndGlyphs">9hi.................................,sh9@</text>
+    <text x="105" y="44.7" textLength="144" lengthAdjust="spacingAndGlyphs">Bs........................................;XMGB@</text>
+    <text x="99" y="48.8" textLength="159" lengthAdjust="spacingAndGlyphs">B5..............................................,s3S&amp;</text>
+    <text x="93" y="52.9" textLength="174" lengthAdjust="spacingAndGlyphs">M;...................................................,;AH9</text>
+    <text x="87" y="57.0" textLength="192" lengthAdjust="spacingAndGlyphs">5:.........................................................,shS@</text>
+    <text x="81" y="61.1" textLength="201" lengthAdjust="spacingAndGlyphs">&amp;:...............................................................iH</text>
+    <text x="78" y="65.2" textLength="210" lengthAdjust="spacingAndGlyphs">9...................................................................rS</text>
+    <text x="75" y="69.3" textLength="219" lengthAdjust="spacingAndGlyphs">3......................................................................A@</text>
+    <text x="72" y="73.4" textLength="222" lengthAdjust="spacingAndGlyphs">X........................................................................X</text>
+    <text x="69" y="77.5" textLength="228" lengthAdjust="spacingAndGlyphs">3..........................................................................H</text>
+    <text x="66" y="81.6" textLength="234" lengthAdjust="spacingAndGlyphs">#...........................................................................:&amp;</text>
+    <text x="66" y="85.7" textLength="234" lengthAdjust="spacingAndGlyphs">;.............................................,,.............................X</text>
+    <text x="63" y="89.8" textLength="240" lengthAdjust="spacingAndGlyphs">5.........................................,:;rrrii:,...........................G</text>
+    <text x="60" y="93.9" textLength="246" lengthAdjust="spacingAndGlyphs">@:......................................:irssAAXXXXssii;,.......................i@</text>
+    <text x="60" y="98.0" textLength="246" lengthAdjust="spacingAndGlyphs">G......................................issXXA5555552AXXsr;,......................G</text>
+    <text x="60" y="102.1" textLength="246" lengthAdjust="spacingAndGlyphs">h....................................;ssXA253MMMMhh3552XXsri:....................A</text>
+    <text x="60" y="106.2" textLength="249" lengthAdjust="spacingAndGlyphs">2..................................:rXA233hMMMHHHHMhh352AAXXr;...................:B</text>
+    <text x="60" y="110.3" textLength="249" lengthAdjust="spacingAndGlyphs">2...............................:irsX23hMHHHGGGGHHHMMh333322Xr;,..................3</text>
+    <text x="60" y="114.4" textLength="252" lengthAdjust="spacingAndGlyphs">2.....................:;;;;:;irsssX25hMHGGGGGGGGGHHMMhhh3335AXr;;,................r&amp;</text>
+    <text x="60" y="118.5" textLength="252" lengthAdjust="spacingAndGlyphs">A.................,:;sssXXXXXXXXA23hHGGGGGSGGSSSGHHHMMhh33352Arssi:,..............;M</text>
+    <text x="60" y="122.6" textLength="252" lengthAdjust="spacingAndGlyphs">5............:;irrsXAAA2255333333hHHGGGGGGGGSGGGGHHHMMMhh352AsA2AXri,.............:A</text>
+    <text x="60" y="126.7" textLength="255" lengthAdjust="spacingAndGlyphs">S...........:rsXXAA222533hMMMHHMMHGGSGSSSSGSSGGGGGHHMMMMh35223Mh52Xr;.............,i&amp;</text>
+    <text x="60" y="130.8" textLength="255" lengthAdjust="spacingAndGlyphs">@...........isXA225533hMMHGGGGGGGGSSSSSSSSSSSSSSSGHHHHHHHHMMMHHMh5As;,.............,9</text>
+    <text x="63" y="134.9" textLength="252" lengthAdjust="spacingAndGlyphs">:.........:rsA253hMMMHGGSS####S###########999999##SSSSSSGGGGHHHMh5Xi,..............H</text>
+    <text x="63" y="139.0" textLength="252" lengthAdjust="spacingAndGlyphs">r........,rrrA53MMHHHHGGS#999BBBB9999999BB&amp;&amp;@&amp;&amp;&amp;&amp;B999#SSSSSGGHHHM35s,..............5</text>
+    <text x="63" y="143.1" textLength="252" lengthAdjust="spacingAndGlyphs">X........rsrs53hhMMHHHGS#9999&amp;&amp;&amp;&amp;&amp;&amp;BBBBB&amp;&amp;&amp;&amp;&amp;@&amp;&amp;&amp;&amp;B99999999#SGHHMh3A;..............s</text>
+    <text x="63" y="147.2" textLength="252" lengthAdjust="spacingAndGlyphs">2.......isssA553hM322225A3hG9B&amp;&amp;&amp;&amp;&amp;@&amp;&amp;&amp;&amp;&amp;9S#H3MGHGHMGSSSSGGHS#SGHMh5X..............r</text>
+    <text x="63" y="151.3" textLength="252" lengthAdjust="spacingAndGlyphs">3.......sAXrrrrii;,..,;i;::XHS##9B&amp;B&amp;BB9#5X5;.:...,;rXXAXXXXAhSSGMh32r.............r</text>
+    <text x="63" y="155.4" textLength="252" lengthAdjust="spacingAndGlyphs">H......r2r,...............,r2hHGGS####SGh;:;..............,:::s3GGMh5A;............X</text>
+    <text x="63" y="159.5" textLength="252" lengthAdjust="spacingAndGlyphs">S.....i2;.................,iX55hMHHGGGMhX;:::,........:rXA2X;:::sMHh35A:...........A</text>
+    <text x="63" y="163.6" textLength="252" lengthAdjust="spacingAndGlyphs">B....;A:..,:;irrr;::....,,:;rXX253333h52siii;;;:::;rX5MGGGHh5Ari;r3M335A...........5</text>
+    <text x="66" y="167.7" textLength="249" lengthAdjust="spacingAndGlyphs">:...2i.:rssXXA222Xsi:,,,,,:;rsXXA22AAAXrriii;;;;irXA22533355552ArXh3355r..........H</text>
+    <text x="66" y="171.8" textLength="249" lengthAdjust="spacingAndGlyphs">;..i2::rsXAAAAAXsri;::,,,,,;irrrssXXXXXXr;:,:;irssrrrrrssriiir23AX5hhh35,.........B</text>
+    <text x="66" y="175.9" textLength="246" lengthAdjust="spacingAndGlyphs">r..22iiii;;;::::iri;;:,,,..,;rX2hG#B#Ms,;s23HGM33522255533552s.;AX;r5MMhr........i</text>
+    <text x="66" y="180.0" textLength="246" lengthAdjust="spacingAndGlyphs">s..Xi.,;iiriisA525MHG##SGM2i.,;irsssr..3##SGM2si;:,irrrrrssA25A.,....rA35........M</text>
+    <text x="66" y="184.1" textLength="243" lengthAdjust="spacingAndGlyphs">X....XA3Asi:;rr;,r2rs2hG#B&amp;B3.........5&amp;SHh5Xi:;2;.ii.,ri;iirsX..;;;:,,:rss,....,</text>
+    <text x="66" y="188.2" textLength="243" lengthAdjust="spacingAndGlyphs">X...s92Ar;,::;X;,;i:2HAA3MH#B,.isA2A;.3Gh35Aris2HA....X2i::;iii.,irssr;,..ir....2</text>
+    <text x="66" y="192.3" textLength="243" lengthAdjust="spacingAndGlyphs">s.;.2@2si:::;A5X:.,rHH2A225H#,,25hHG5.2H522222XXAAr;;sAsiiirrrr.:ssXXXssi.......S</text>
+    <text x="66" y="196.4" textLength="243" lengthAdjust="spacingAndGlyphs">;.i.AMXsri;irsXAsrs22A5M3A5MG.:3H#B&amp;S.:hM22255552XXXXsrssX25225:s5A23hhhHX......@</text>
+    <text x="63" y="200.5" textLength="243" lengthAdjust="spacingAndGlyphs">@.,A:X5XXXssrrrrrssA23MH3A5hHM.;MS9B&amp;@s.iHM52225hMh352255553hhMH:3h3hMHHHGM.....3</text>
+    <text x="63" y="204.6" textLength="246" lengthAdjust="spacingAndGlyphs">#,A5rXH222AXXXXXX25hMMM355hMSA.AS9B&amp;&amp;&amp;G..2SMhh3553MHHMMMhMMMHHGG;HMMHGGGGSH:..iM#&amp;</text>
+    <text x="63" y="208.7" textLength="249" lengthAdjust="spacingAndGlyphs">sr35AsGhh355555533hhMhhhMMHHS,.SBB&amp;@@&amp;&amp;A.r#GHHHHM3553hhMMHHGGGSHiSGGSSSSGGHi.rMH3ss</text>
+    <text x="60" y="212.8" textLength="108" lengthAdjust="spacingAndGlyphs">G,Ah33rHHMhhhhh333hhhMMHHHHMS3.3BB@@</text>
+    <text x="171" y="212.8" textLength="144" lengthAdjust="spacingAndGlyphs">@@&amp;9:;H#SGGSSGHMMMMHHGGGGS95A9SSSSSGGGGs.A3Asr;B</text>
+    <text x="60" y="216.9" textLength="105" lengthAdjust="spacingAndGlyphs">5,2h3hX5GhMMMhhhhhhMHGGGHHMGG.;9B&amp;@</text>
+    <text x="174" y="216.9" textLength="141" lengthAdjust="spacingAndGlyphs">@B&amp;M,3SGGSS##SSSGGHGGGGS9#rG#S##SGGGGGX.X2MhAiB</text>
+    <text x="60" y="221.0" textLength="108" lengthAdjust="spacingAndGlyphs">2;5hh35sGMhhhhhhhMHHGGGHHHSM:iSB&amp;@@@</text>
+    <text x="174" y="221.0" textLength="141" lengthAdjust="spacingAndGlyphs">@&amp;BBMsMGS########SSSSS#9Ssh9SSSSGGGGGGA.AS#H3A@</text>
+    <text x="60" y="225.1" textLength="252" lengthAdjust="spacingAndGlyphs">3r3h335XXMhMhhhMHGGGSSSSSH2XM#GS9B&amp;&amp;@@B#G#&amp;BH22hG######SSGHMM32H#SSSGGGGGGHHX.HB9SHh</text>
+    <text x="60" y="229.2" textLength="252" lengthAdjust="spacingAndGlyphs">hs3h3525XsXXA5hhMHHHMMh2AXh#Sh55MGS###H33H#BBS5XA53hhhh333h3MG#SGSSGSGGGHHMHA;MSSSGS</text>
+    <text x="60" y="233.3" textLength="252" lengthAdjust="spacingAndGlyphs">MX3h322555AXXA22555522533MH5r;:;s2hhh3X;,:;r5GSHHGSSSSSSS####SGSSSGGGGHHHMMHA;AhHSS@</text>
+    <text x="60" y="237.4" textLength="249" lengthAdjust="spacingAndGlyphs">GA3h52255533hhMMHHHHHHHHh2Ai.....;rrr:,.....i33hMHGGGGGGGGGGSSSSGGGHHHHMHMMMXX23HS9</text>
+    <text x="60" y="241.5" textLength="249" lengthAdjust="spacingAndGlyphs">#A3322555333hhhhMMMMHHHh3XsXAXrrs;,,:r5hh352Xs3GSSSSSSSSSSSSSSSGGGHHHHMMMMhMA3M3M#&amp;</text>
+    <text x="60" y="245.6" textLength="249" lengthAdjust="spacingAndGlyphs">B53322255533hhhMMHHGGGGHh2XXXAAA2AA23HGHHh2XX5GS#####SSSSSSSSGGHHHMHMMMMMMMM5MSMM#@</text>
+    <text x="60" y="249.7" textLength="246" lengthAdjust="spacingAndGlyphs">@35522225333hhhMMMHGSSGGHh522AXA5hMMMHHhhMHGGS#######SSSSGSSGGHHHHMMMMMMMMMhhB&amp;GM#</text>
+    <text x="63" y="253.8" textLength="243" lengthAdjust="spacingAndGlyphs">hA22A2255533hhMMMHHGGGGHh552XX2hMHHhhHHhMHGG##S####SSSGGGGGGHHHHHMMMMMhMhhhM&amp;#HG&amp;</text>
+    <text x="63" y="257.9" textLength="243" lengthAdjust="spacingAndGlyphs">MAAAAA22553h3hhhMMHHHHM32AXXX2MSHMh3H#SHMHHGGGHS###SSGGHHHHHHMMHHMMMMhhhhh3M##9B9</text>
+    <text x="63" y="262.0" textLength="243" lengthAdjust="spacingAndGlyphs">H3AAAA2225333333hhMMh32AXsA5MGS#SHHS#SS###SHHHHMMMHGGGGHHHHMMMMMMMMMhhhhhh3M999GS</text>
+    <text x="63" y="266.1" textLength="243" lengthAdjust="spacingAndGlyphs">GhAXAAA22255335533552AssA5hMMhhhMHGGHHMMMGSSSHHh5553hHHHMMMMMMMMMMMhhhhhhh3H9S#9@</text>
+    <text x="63" y="270.2" textLength="240" lengthAdjust="spacingAndGlyphs">9hAAAAAAA2225552AXXXXrrA332AXXXAA2525222AAA23MMM325225hMMMMMMMMMMMMhh3hhhh3H9##9</text>
+    <text x="63" y="274.3" textLength="240" lengthAdjust="spacingAndGlyphs">@h2AAAAAAA2222AXsrrriisAXrirrrriirriiiiirii;;isXXAAXXA5hMMMMMMMMMhhh33hhh33H9##&amp;</text>
+    <text x="66" y="278.4" textLength="234" lengthAdjust="spacingAndGlyphs">H2AAAAAAAAXAXXXriiii;i;,,,..,.....:;;iri;;;:,,..:irrX23hhMMMMMMMhhh33hh3325GS&amp;</text>
+    <text x="66" y="282.5" textLength="225" lengthAdjust="spacingAndGlyphs">&amp;3XAAAAXXXXXXXsi;;;,....,:rAA2553hHGSSSGHh52Asi;:,:rXA53hhhhhhhhhh33h33353#</text>
+    <text x="69" y="286.6" textLength="216" lengthAdjust="spacingAndGlyphs">9AAAAAXXXXXXsri;;,..,:isA5hHGSSSS##SGM3555555552XirXA5333hhhhhh33333355M</text>
+    <text x="72" y="290.7" textLength="210" lengthAdjust="spacingAndGlyphs">#2AAXXXXXXXsrii;:;irsssssX233h33352AAA25333hh333AXXA25333333hh33333555</text>
+    <text x="75" y="294.8" textLength="207" lengthAdjust="spacingAndGlyphs">92AXXXsssssri;;;rssssssssXA555555225333h33hhhhh52AA25555333333333552S</text>
+    <text x="78" y="298.9" textLength="201" lengthAdjust="spacingAndGlyphs">GXXssssssrri;;isssssssssssXXXXXXXXAAA55533hhhhh52A2255555353555522A</text>
+    <text x="81" y="303.0" textLength="198" lengthAdjust="spacingAndGlyphs">2ssssssrrri;irssssssrrri:,,.....:irsXA2533hhh332AAA2222222555222A#</text>
+    <text x="81" y="307.1" textLength="195" lengthAdjust="spacingAndGlyphs">9sssrrrrrii;irssssssrii;,,,...:;rsXAA2553hhMM352AAAAAAAAA2222AAXS</text>
+    <text x="84" y="311.2" textLength="189" lengthAdjust="spacingAndGlyphs">hrrrrrrii;;;rssXssssrsrssssX53hhMMMMMMMHHHMh352AAXXXXXXAAAXXXsM</text>
+    <text x="84" y="315.3" textLength="189" lengthAdjust="spacingAndGlyphs">@Xiiiiii;;;;isXXXAAA22A222553hhMHGGSGGGGHMh3332AAXXXXXsXXXssrs@</text>
+    <text x="87" y="319.4" textLength="183" lengthAdjust="spacingAndGlyphs">Bs;;;;;;;;:;irsA2555222255533hMMHGGHGGHh5222AAXXXsXsrrssssr;s</text>
+    <text x="90" y="323.5" textLength="183" lengthAdjust="spacingAndGlyphs">Bs::::::::::;rXXA5AXA252A2225hhMh33hh222XXXXssrrsrriirrrr;rXr</text>
+    <text x="93" y="327.6" textLength="186" lengthAdjust="spacingAndGlyphs">#r::::,,,::;iirssrssA5XsssXA222AAAAAXXXsrriiiiiiiiiirri;rHA.i@</text>
+    <text x="96" y="331.7" textLength="183" lengthAdjust="spacingAndGlyphs">#i:,,,,,,,::;;;;iiirXXrrrsssssssssssriiii;;;;;;;iiiiiis5Hi..#</text>
+    <text x="99" y="335.8" textLength="177" lengthAdjust="spacingAndGlyphs">M:,,,....,,,,::,:::ii;;;;;;i;ii;;ii;;::,..,,:,::;;;is23M:.i</text>
+    <text x="99" y="339.9" textLength="177" lengthAdjust="spacingAndGlyphs">9r,.................,....,,,,,,,:::,.........,,,:;irX5hh..M</text>
+    <text x="99" y="344.0" textLength="174" lengthAdjust="spacingAndGlyphs">#s:,.........................................,,:;irs25h3..</text>
+    <text x="96" y="348.1" textLength="177" lengthAdjust="spacingAndGlyphs">@9X.:........................................,,:;irsX25MA.5</text>
+    <text x="96" y="352.2" textLength="174" lengthAdjust="spacingAndGlyphs">&amp;Bh.,,......................................,,:;irrX253M;.</text>
+    <text x="96" y="356.3" textLength="174" lengthAdjust="spacingAndGlyphs">@BSr.:,...................................,,::;irrsA253h.M</text>
+    <text x="96" y="360.4" textLength="171" lengthAdjust="spacingAndGlyphs">@@Bh..,.................................,,,::;irssA255hsi</text>
+    <text x="99" y="364.5" textLength="168" lengthAdjust="spacingAndGlyphs">@@#i................................,,:::;;;irssX2553A,B</text>
+    <text x="102" y="368.6" textLength="162" lengthAdjust="spacingAndGlyphs">@B5.............................,:::;;;iiiirssX22552.M</text>
+    <text x="105" y="372.7" textLength="156" lengthAdjust="spacingAndGlyphs">@S;.................,,,,,,,::::;;iiiiirrrrssA2252A,5</text>
+    <text x="108" y="376.8" textLength="150" lengthAdjust="spacingAndGlyphs">B3...,,,,,,,,,,,,,::;;;;;;iiiiiirrrrrrssXXA2222A,X</text>
+    <text x="108" y="380.9" textLength="147" lengthAdjust="spacingAndGlyphs">@#i..,,,,,:::::::;;iiirriirrrrrrrrssssXXXAA222A:r</text>
+    <text x="111" y="385.0" textLength="144" lengthAdjust="spacingAndGlyphs">@h..,,,::::;;;;iiirrsssssssssssssssXXXXAA222X;,@</text>
+    <text x="114" y="389.1" textLength="138" lengthAdjust="spacingAndGlyphs">Br.,:::::;;;;iiirssXXXXXXssssssssXXXXXAA22Ai.#</text>
+    <text x="117" y="393.2" textLength="132" lengthAdjust="spacingAndGlyphs">H..:;;;;;;;iiiirsXAAAXXXsssssXXXXXXAA22AAs.M</text>
+    <text x="117" y="397.3" textLength="129" lengthAdjust="spacingAndGlyphs">@2.:;;;;;;;iiiiirXAAAAXXssssXXXXXXAA222As,2</text>
+    <text x="120" y="401.4" textLength="123" lengthAdjust="spacingAndGlyphs">#:,;ii;;;;iiiiiisXAAXXsssXXXXXAAAA222AX:r</text>
+  </g>
+</svg>
