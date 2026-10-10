@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>ARS monogram</title>
+  <rect width="64" height="64" rx="14" fill="#111315"/>
+  <g fill="none" stroke="#dfbd78" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 42 15 22 22 42M10.5 35h9"/>
+    <path d="M27 42V22h7a6 6 0 0 1 0 12h-7m7 0 8 8"/>
+    <path d="M58 24c-3-3-12-3-12 3 0 7 13 3 13 10 0 6-9 8-14 3"/>
+  </g>
+</svg>

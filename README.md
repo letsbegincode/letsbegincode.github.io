@@ -1,37 +1,42 @@
-﻿# Abhinav Ranjan Sulabh - GitHub Pages Portfolio
+# Abhinav Ranjan Sulabh
 
-A recruiter-first, engineering-deep portfolio built as a static site for GitHub Pages.
+Personal portfolio showcasing software engineering experience, selected projects, and technical skills.
 
-## Included
+[Visit the portfolio](https://letsbegincode.github.io/)
 
-- index.html - portfolio content and semantic structure
-- styles.css - responsive dark/yellow visual system
-- script.js - ASCII portrait, motion, section tracking, and subtle pointer effects
-- myImage.jpeg - source portrait
-- general/Abhinav_Ranjan_Sulabh_Resume.pdf - the only resume included
-- .nojekyll - keeps GitHub Pages deployment simple
+## Stack
 
-The project section contains only the four projects backed by README files in the source folder:
+Semantic HTML, responsive CSS, and vanilla JavaScript. No build step or package installation is required. The site is hosted on GitHub Pages.
 
-1. European Power Fair Value Forecasting
-2. Core Banking Engine
-3. FED_IIDS
-4. DNS Resolution Engine
+## Project structure
 
-Direct repository links are shown only for the public repositories currently available: Banking System and FED_IIDS. The other two remain complete on-page engineering briefs without broken or invented links.
-
-## Publish on GitHub Pages
-
-1. Create a repository named letsbegincode.github.io.
-2. Upload the contents of this folder to the repository root.
-3. In GitHub, open Settings > Pages.
-4. Select Deploy from a branch, then choose main and / (root).
-5. Open https://letsbegincode.github.io after the Pages build completes.
+| File | Purpose |
+| --- | --- |
+| `index.html` | Portfolio content, navigation, and page metadata |
+| `styles.css` | Typography, colors, layouts, and responsive styles |
+| `script.js` | Mobile navigation, active section tracking, and optional ASCII portrait |
+| `myImage.jpeg` | Profile photograph |
+| `favicon.svg`, `favicon.ico` | Browser icons |
+| `apple-touch-icon.png` | Home-screen icon for Apple devices |
+| `general/Abhinav_Ranjan_Sulabh_Resume.pdf` | Current resume linked from the portfolio |
+| `.nojekyll` | Serves the site without Jekyll processing |
 
 ## Local preview
 
-Open index.html directly, or serve this folder with any static file server.
+From the repository root, run:
 
-## Updating later
+```sh
+python -m http.server 8000 --bind 127.0.0.1
+```
 
-Keep one canonical resume at general/Abhinav_Ranjan_Sulabh_Resume.pdf. When the forecasting and DNS repositories are public, add their final URLs to the matching project cards in index.html.
+Open [localhost:8000](http://localhost:8000). Stop the server with `Ctrl+C`.
+
+## Maintenance
+
+- Update experience, project descriptions, and skills in `index.html` alongside resume changes.
+- Replace the PDF at its existing path so resume links continue to work.
+- Keep project links pointed at their actual repositories and qualify evaluation metrics with their context.
+- Review mobile layouts, keyboard navigation, project links, and the resume link after changes.
+- Update the SVG and raster icons together when changing the monogram or colors.
+
+GitHub Pages should serve the root of the configured publishing branch. Changes go live after they are pushed and the Pages deployment completes.
