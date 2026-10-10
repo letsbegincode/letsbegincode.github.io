@@ -32,8 +32,9 @@ a:hover { color: var(--accent); }
 .eyebrow { display: flex; align-items: center; gap: 9px; color: var(--accent); font-size: .8125rem; font-weight: 700; letter-spacing: .07em; line-height: 1.6; text-transform: uppercase; }
 .site-header { position: sticky; z-index: 50; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); }
 .header-inner { display: flex; align-items: center; gap: 24px; width: min(var(--max), calc(100% - 64px)); min-height: 80px; margin-inline: auto; }
-.brand { font-size: 1.5rem; font-weight: 700; letter-spacing: -.04em; line-height: 1; }
-.brand span { color: var(--accent); }
+.brand { display: inline-flex; flex-shrink: 0; align-items: center; min-height: 48px; line-height: 1; }
+.brand img { width: 72px; height: 48px; transition: filter .25s ease; }
+.brand:hover img { filter: drop-shadow(0 0 7px rgba(223,189,120,.4)); }
 .nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
 .nav-links a { color: var(--muted); font-size: .875rem; padding-block: 10px; }
 .nav-links a:hover, .nav-links a.is-active { color: var(--ink); }
@@ -60,9 +61,10 @@ a:hover { color: var(--accent); }
 .hero-socials a, .contact-socials a { padding-block: 5px; }
 .portrait-card { width: 100%; max-width: 360px; justify-self: end; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
 .portrait-stage { position: relative; width: 100%; aspect-ratio: 4 / 4.6; background: var(--bg); overflow: hidden; }
-.portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
-.portrait-card[data-mode="ascii"] .portrait-photo { visibility: hidden; }
-.ascii-portrait { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; color: var(--accent); font-family: Consolas, "Courier New", monospace; font-weight: 400; white-space: pre; user-select: none; }
+.portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; opacity: 1; transition: opacity .55s ease; }
+.portrait-card[data-mode="ascii"] .portrait-photo { opacity: 0; }
+.ascii-portrait { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; color: var(--accent); font-family: Consolas, "Courier New", monospace; font-weight: 400; white-space: pre; user-select: none; opacity: 0; transition: opacity .55s ease; }
+.portrait-card[data-mode="ascii"] .ascii-portrait { opacity: 1; }
 .portrait-card figcaption { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 18px; border-top: 1px solid var(--line); }
 .portrait-card figcaption strong { display: block; font-size: .875rem; }
 .portrait-card figcaption div > span { display: block; color: var(--muted); font-size: .8125rem; margin-top: 3px; }
@@ -161,6 +163,55 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
 .resume-card:hover { background: #29241c; border-color: var(--accent); }
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-block: 24px 32px; color: var(--muted); font-size: .8125rem; }
 .site-footer > span:nth-child(2) { color: var(--muted); }
+/* Motion enhances the existing layout without hiding content by default. */
+.page-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 2px; pointer-events: none; }
+.page-progress span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: var(--accent); }
+.hero { position: relative; isolation: isolate; }
+.hero::before { position: absolute; z-index: -1; top: 0; right: 0; width: min(440px, 100%); height: 440px; background: radial-gradient(ellipse, rgba(223,189,120,.07), transparent 68%); content: ""; pointer-events: none; }
+.project-card, .education-card, .resume-card, .portrait-card { position: relative; isolation: isolate; }
+.project-card::before, .education-card::before, .resume-card::before, .portrait-card::before { position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: radial-gradient(320px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(223,189,120,.1), transparent 75%); opacity: 0; content: ""; pointer-events: none; transition: opacity .3s ease; }
+.portrait-stage::before { position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(223,189,120,.65), transparent); box-shadow: 0 0 25px 8px rgba(223,189,120,.04); opacity: 0; content: ""; pointer-events: none; }
+.portrait-stage::after { position: absolute; z-index: 3; inset: -20% -50%; background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.1) 50%, transparent 60%); opacity: 0; content: ""; pointer-events: none; }
+.footer-identity { display: flex; align-items: center; gap: 14px; }
+.footer-identity img { width: 48px; height: 32px; }
+.site-footer { align-items: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .hero-copy > * { animation: arrive .7s cubic-bezier(.22,1,.36,1) both; }
+  .motion-ready .hero-copy > :nth-child(2) { animation-delay: .08s; }
+  .motion-ready .hero-copy > :nth-child(3) { animation-delay: .16s; }
+  .motion-ready .hero-copy > :nth-child(4) { animation-delay: .24s; }
+  .motion-ready .hero-copy > :nth-child(5) { animation-delay: .32s; }
+  .motion-ready .hero-copy > :nth-child(6) { animation-delay: .4s; }
+  .motion-ready .portrait-card { animation: portrait-arrive .9s ease .15s both; }
+  .motion-ready .reveal { opacity: 0; translate: 0 18px; transition: opacity .65s ease var(--reveal-delay, 0ms), translate .65s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms), transform .28s ease, border-color .25s ease, box-shadow .28s ease, background .25s ease; }
+  .motion-ready .reveal.is-visible { opacity: 1; translate: 0 0; }
+  .status-dot { animation: status-pulse 3.5s ease-in-out infinite; }
+  .portrait-card[data-mode="ascii"] .portrait-stage::before { opacity: 1; animation: portrait-scan 7s linear infinite; }
+  .project-card, .education-card, .resume-card, .portrait-card { transition: transform .28s ease, border-color .25s ease, box-shadow .28s ease, background .25s ease; }
+  .button, .header-cta { transition: transform .22s ease, color .18s ease, background .18s ease, border-color .18s ease, box-shadow .22s ease; }
+  .button span, .header-cta span, .project-link span, .text-link span, .resume-card strong span, .contact-email span { display: inline-block; transition: transform .22s ease; }
+  .nav-links a { position: relative; }
+  .nav-links a::after { position: absolute; bottom: 2px; left: 0; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; content: ""; transition: transform .25s ease; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .experience-row { position: relative; }
+  .experience-row::before { position: absolute; top: -1px; left: 0; height: 1px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; content: ""; transition: transform .4s ease; }
+  .experience-row:focus-within::before { transform: scaleX(1); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover, .education-card:hover, .resume-card:hover { transform: translateY(-4px); border-color: #82704d; box-shadow: 0 16px 38px rgba(0,0,0,.15); }
+  .project-card:hover::before, .education-card:hover::before, .resume-card:hover::before, .portrait-card:hover::before { opacity: 1; }
+  .portrait-card { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+  .portrait-card:hover { border-color: #82704d; box-shadow: 0 18px 48px rgba(0,0,0,.25); }
+  .portrait-card:hover .portrait-stage::after { animation: portrait-sheen .9s ease both; }
+  .button:hover, .header-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+  .button:hover span, .header-cta:hover span, .project-link:hover span, .text-link:hover span, .resume-card:hover strong span, .contact-email:hover span { transform: translate(2px, -2px); }
+  .experience-row:hover::before { transform: scaleX(1); }
+}
+@keyframes arrive { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+@keyframes portrait-arrive { from { opacity: 0; } to { opacity: 1; } }
+@keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(223,189,120,0); } 45% { box-shadow: 0 0 0 5px rgba(223,189,120,.1); } }
+@keyframes portrait-scan { 0% { top: 0; opacity: 0; } 8%, 88% { opacity: .55; } 100% { top: 100%; opacity: 0; } }
+@keyframes portrait-sheen { 0% { opacity: 0; transform: translateX(-35%); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateX(35%); } }
 @media (max-width: 1000px) {
   .project-card h3 { min-height: 2.8em; }
   .hero-grid { gap: 36px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
@@ -209,6 +260,8 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
   .site-footer > span:nth-child(2) { display: none; }
 }
 @media (max-width: 440px) {
+  .header-inner { gap: 10px; }
+  .brand img { width: 60px; height: 40px; }
   .eyebrow { font-size: .75rem; letter-spacing: .04em; }
   .hero-role { font-size: 1rem; }
   .hero-lede { font-size: 1rem; }
@@ -227,11 +280,16 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .portrait-stage::before, .portrait-stage::after { display: none; }
 }
 @media print {
   :root { color-scheme: light; --bg: #fff; --surface: #fff; --ink: #111; --muted: #444; --accent: #584019; --line: #ccc; }
-  .site-header, .hero-actions, .hero-socials, .portrait-toggle, .skip-link, .site-footer { display: none; }
+  .site-header, .hero-actions, .hero-socials, .portrait-toggle, .skip-link, .site-footer, .page-progress { display: none; }
+  .motion-ready .reveal { opacity: 1; translate: none; }
+  .motion-ready .hero-copy > *, .motion-ready .portrait-card { animation: none; opacity: 1; translate: none; }
+  .portrait-card[data-mode="ascii"] .portrait-photo { opacity: 1; }
+  .ascii-portrait, .portrait-stage::before, .portrait-stage::after { display: none; }
   .hero, .section, .contact-section { padding-block: 24px; }
   .container { width: 100%; }
   .experience-row, .project-card, .education-card { break-inside: avoid; }

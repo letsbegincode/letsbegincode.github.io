@@ -14,7 +14,8 @@ Semantic HTML, responsive CSS, and vanilla JavaScript. No build step or package 
 | --- | --- |
 | `index.html` | Portfolio content, navigation, and page metadata |
 | `styles.css` | Typography, colors, layouts, and responsive styles |
-| `script.js` | Mobile navigation, active section tracking, and optional ASCII portrait |
+| `script.js` | Navigation, scroll reveals, pointer highlights, and ASCII/photo portrait |
+| `assets/ars-logo.svg`, `assets/ars-logo.png` | Custom ARS monogram in vector and transparent PNG formats |
 | `myImage.jpeg` | Profile photograph |
 | `favicon.svg`, `favicon.ico` | Browser icons |
 | `apple-touch-icon.png` | Home-screen icon for Apple devices |
@@ -38,5 +39,9 @@ Open [localhost:8000](http://localhost:8000). Stop the server with `Ctrl+C`.
 - Keep project links pointed at their actual repositories and qualify evaluation metrics with their context.
 - Review mobile layouts, keyboard navigation, project links, and the resume link after changes.
 - Update the SVG and raster icons together when changing the monogram or colors.
+
+## Motion
+
+The site includes staggered entrances, scroll reveals, card highlights, and an ASCII portrait with a photo toggle. Pointer tilt and hover motion run on devices with a fine pointer. Reduced-motion preferences disable animations and show the photograph by default; content and navigation also work without JavaScript.
 
 GitHub Pages should serve the root of the configured publishing branch. Changes go live after they are pushed and the Pages deployment completes.

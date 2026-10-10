@@ -1,5 +1,72 @@
 (() => {
   document.documentElement.classList.remove("no-js");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const root = document.documentElement;
+  const progress = document.getElementById("pageProgress");
+
+  // Enhancement only: content is fully visible without JavaScript or with reduced motion.
+  const revealItems = [...document.querySelectorAll(
+    ".section-heading, .about-copy, .experience-row, .project-card, .additional-grid article, .skill-grid article, .education-card, .achievement-list li, .contact-section > div, .resume-card"
+  )];
+  let revealObserver;
+  if (!reducedMotion.matches && "IntersectionObserver" in window) {
+    root.classList.add("motion-ready");
+    revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) return;
+        target.classList.add("is-visible");
+        observer.unobserve(target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -20px" });
+    revealItems.forEach((item) => {
+      item.classList.add("reveal");
+      const siblings = [...item.parentElement.children];
+      item.style.setProperty("--reveal-delay", `${Math.min(siblings.indexOf(item), 3) * 65}ms`);
+      revealObserver.observe(item);
+    });
+    document.addEventListener("focusin", (event) => {
+      const item = event.target.closest(".reveal");
+      if (item) { item.classList.add("is-visible"); revealObserver.unobserve(item); }
+    });
+  }
+
+  const hoverCards = [...document.querySelectorAll(".project-card, .education-card, .resume-card, .portrait-card")];
+  const resetCard = (item) => {
+    item.style.removeProperty("--spot-x");
+    item.style.removeProperty("--spot-y");
+    item.style.removeProperty("--tilt-x");
+    item.style.removeProperty("--tilt-y");
+  };
+  hoverCards.forEach((item) => {
+    let pointerFrame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+    item.addEventListener("pointermove", (event) => {
+      if (!finePointer.matches || reducedMotion.matches) return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (pointerFrame) return;
+      pointerFrame = window.requestAnimationFrame(() => {
+        pointerFrame = 0;
+        if (!finePointer.matches || reducedMotion.matches) return;
+        const bounds = item.getBoundingClientRect();
+        const x = pointerX - bounds.left;
+        const y = pointerY - bounds.top;
+        item.style.setProperty("--spot-x", `${x}px`);
+        item.style.setProperty("--spot-y", `${y}px`);
+        if (item.classList.contains("portrait-card")) {
+          item.style.setProperty("--tilt-x", `${(0.5 - y / bounds.height) * 5}deg`);
+          item.style.setProperty("--tilt-y", `${(x / bounds.width - 0.5) * 5}deg`);
+        }
+      });
+    }, { passive: true });
+    item.addEventListener("pointerleave", () => {
+      window.cancelAnimationFrame(pointerFrame);
+      pointerFrame = 0;
+      resetCard(item);
+    });
+  });
 
   const menuToggle = document.getElementById("menuToggle");
   const mobileNav = document.getElementById("mobileNav");
@@ -27,6 +94,9 @@
   const sections = [...new Set(navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean))];
   let scrollFrame = 0;
   const updateNavigation = () => {
+    const available = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = available > 0 ? Math.max(0, Math.min(1, window.scrollY / available)) : 0;
+    progress?.style.setProperty("transform", `scaleX(${ratio})`);
     const offset = (document.querySelector(".site-header")?.offsetHeight || 80) + 80;
     let active = null;
     for (const section of sections) {
@@ -52,7 +122,7 @@
   const canvas = document.getElementById("portraitCanvas");
   const toggle = document.getElementById("portraitToggle");
   const card = document.querySelector(".portrait-card");
-  // Generate the optional portrait only on request. The photo stays visible on failure.
+  // Start with the ASCII portrait when motion is welcome; preserve the photo on failure.
   const renderAscii = () => {
     const context = canvas?.getContext("2d", { willReadFrequently: true });
     if (!context || !photo?.naturalWidth || !stage?.clientWidth || !portrait) return false;
@@ -88,24 +158,40 @@
   };
   const showPhoto = () => {
     if (card) card.dataset.mode = "photo";
-    if (portrait) portrait.hidden = true;
     toggle?.setAttribute("aria-pressed", "false");
     if (toggle) toggle.textContent = "View ASCII";
   };
-  const enableToggle = () => { if (toggle && photo?.naturalWidth) toggle.hidden = false; };
+  const showAscii = () => {
+    try {
+      if (!renderAscii()) return false;
+      card.dataset.mode = "ascii";
+      portrait.hidden = false;
+      toggle.setAttribute("aria-pressed", "true");
+      toggle.textContent = "View photo";
+      return true;
+    } catch { showPhoto(); if (toggle) toggle.hidden = true; return false; }
+  };
+  const enableToggle = () => {
+    if (!toggle || !photo?.naturalWidth) return;
+    toggle.hidden = false;
+    if (!reducedMotion.matches) showAscii();
+  };
   if (photo?.complete) enableToggle();
   else photo?.addEventListener("load", enableToggle, { once: true });
   photo?.addEventListener("error", () => { showPhoto(); if (toggle) toggle.hidden = true; }, { once: true });
   toggle?.addEventListener("click", () => {
     if (card?.dataset.mode === "ascii") { showPhoto(); return; }
-    try {
-      if (!renderAscii()) return;
-      card.dataset.mode = "ascii";
-      portrait.hidden = false;
-      toggle.setAttribute("aria-pressed", "true");
-      toggle.textContent = "View photo";
-    } catch { showPhoto(); toggle.hidden = true; }
+    showAscii();
   });
+  reducedMotion.addEventListener("change", () => {
+    if (!reducedMotion.matches) return;
+    root.classList.remove("motion-ready");
+    revealObserver?.disconnect();
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    hoverCards.forEach(resetCard);
+    showPhoto();
+  });
+  finePointer.addEventListener("change", () => hoverCards.forEach(resetCard));
   let resizeTimer = 0;
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
