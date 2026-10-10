@@ -4,6 +4,41 @@
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const root = document.documentElement;
   const progress = document.getElementById("pageProgress");
+  const spotlight = document.getElementById("pageSpotlight");
+  const cursorHalo = document.getElementById("cursorHalo");
+  let cursorFrame = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  const clearCursor = () => {
+    window.cancelAnimationFrame(cursorFrame);
+    cursorFrame = 0;
+    root.classList.remove("pointer-active", "pointer-interactive");
+  };
+  const animateCursor = () => {
+    if (reducedMotion.matches || !finePointer.matches || document.hidden) { clearCursor(); return; }
+    cursorX += (targetX - cursorX) * 0.22;
+    cursorY += (targetY - cursorY) * 0.22;
+    const location = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    if (spotlight) spotlight.style.transform = location;
+    if (cursorHalo) cursorHalo.style.transform = location;
+    if (Math.abs(targetX - cursorX) + Math.abs(targetY - cursorY) > 0.25) {
+      cursorFrame = window.requestAnimationFrame(animateCursor);
+    } else cursorFrame = 0;
+  };
+  document.addEventListener("pointermove", (event) => {
+    if (!finePointer.matches || reducedMotion.matches || event.pointerType === "touch") return;
+    targetX = event.clientX;
+    targetY = event.clientY;
+    if (!root.classList.contains("pointer-active")) { cursorX = targetX; cursorY = targetY; }
+    root.classList.add("pointer-active");
+    root.classList.toggle("pointer-interactive", !!event.target.closest("a, button, summary"));
+    if (!cursorFrame) cursorFrame = window.requestAnimationFrame(animateCursor);
+  }, { passive: true });
+  document.addEventListener("pointerleave", clearCursor);
+  window.addEventListener("blur", clearCursor);
+  document.addEventListener("visibilitychange", () => { if (document.hidden) clearCursor(); });
 
   // Enhancement only: content is fully visible without JavaScript or with reduced motion.
   const revealItems = [...document.querySelectorAll(
@@ -126,33 +161,52 @@
   const renderAscii = () => {
     const context = canvas?.getContext("2d", { willReadFrequently: true });
     if (!context || !photo?.naturalWidth || !stage?.clientWidth || !portrait) return false;
-    const columns = Math.max(48, Math.min(80, Math.floor(stage.clientWidth / 4)));
-    const fontSize = stage.clientWidth / (columns * 0.61);
-    const lineHeight = fontSize * 1.05;
-    const rows = Math.floor(stage.clientHeight / lineHeight);
-    canvas.width = columns;
-    canvas.height = rows;
-    const sourceRatio = photo.naturalWidth / photo.naturalHeight;
-    const targetRatio = stage.clientWidth / stage.clientHeight;
-    let width = photo.naturalWidth;
-    let height = photo.naturalHeight;
+    const padding = 12;
+    const displayWidth = stage.clientWidth - padding * 2;
+    const displayHeight = stage.clientHeight - padding * 2;
+    const columns = Math.max(72, Math.min(112, Math.floor(displayWidth / 3)));
+    // Measure the actual glyph width instead of estimating the font's proportions.
+    context.font = '700 10px "Courier New", monospace';
+    const glyphRatio = context.measureText("M").width / 10;
+    const fontSize = displayWidth / (columns * glyphRatio);
+    const lineHeight = fontSize * 0.82;
+    const rows = Math.floor(displayHeight / lineHeight);
+    canvas.width = columns * 2;
+    canvas.height = rows * 2;
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    // Exclude the dark border around the source photograph before framing it.
+    const insetX = photo.naturalWidth * 0.025;
+    const insetY = photo.naturalHeight * 0.025;
+    let width = photo.naturalWidth - insetX * 2;
+    let height = photo.naturalHeight - insetY * 2;
+    const sourceRatio = width / height;
+    const targetRatio = displayWidth / displayHeight;
     if (sourceRatio > targetRatio) width = height * targetRatio;
     else height = width / targetRatio;
-    context.drawImage(photo, (photo.naturalWidth - width) / 2, (photo.naturalHeight - height) * 0.42, width, height, 0, 0, columns, rows);
-    const pixels = context.getImageData(0, 0, columns, rows).data;
-    const characters = "@%#*+=-:. ";
+    context.drawImage(photo, (photo.naturalWidth - width) / 2, insetY + (photo.naturalHeight - insetY * 2 - height) * 0.42, width, height, 0, 0, canvas.width, canvas.height);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+    const characters = " .,:;irsXA253hMHGS#9B&@";
     const lines = [];
     for (let y = 0; y < rows; y += 1) {
       let line = "";
       for (let x = 0; x < columns; x += 1) {
-        const index = (y * columns + x) * 4;
-        const luminance = 0.2126 * pixels[index] + 0.7152 * pixels[index + 1] + 0.0722 * pixels[index + 2];
-        line += characters[Math.round(luminance / 255 * (characters.length - 1))];
+        let luminance = 0;
+        for (let dy = 0; dy < 2; dy += 1) {
+          for (let dx = 0; dx < 2; dx += 1) {
+            const index = ((y * 2 + dy) * canvas.width + x * 2 + dx) * 4;
+            luminance += 0.2126 * pixels[index] + 0.7152 * pixels[index + 1] + 0.0722 * pixels[index + 2];
+          }
+        }
+        luminance /= 4;
+        const density = luminance > 205 ? 0 : Math.max(0.06, Math.min(1, (luminance - 12) / 185));
+        line += characters[Math.round(density * (characters.length - 1))];
       }
       lines.push(line);
     }
     portrait.style.fontSize = `${fontSize}px`;
     portrait.style.lineHeight = `${lineHeight}px`;
+    stage.style.setProperty("--scan-distance", `${stage.clientHeight}px`);
     portrait.textContent = lines.join("\n");
     return true;
   };
@@ -189,9 +243,10 @@
     revealObserver?.disconnect();
     revealItems.forEach((item) => item.classList.add("is-visible"));
     hoverCards.forEach(resetCard);
+    clearCursor();
     showPhoto();
   });
-  finePointer.addEventListener("change", () => hoverCards.forEach(resetCard));
+  finePointer.addEventListener("change", () => { hoverCards.forEach(resetCard); clearCursor(); });
   let resizeTimer = 0;
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);

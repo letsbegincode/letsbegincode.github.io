@@ -42,6 +42,6 @@ Open [localhost:8000](http://localhost:8000). Stop the server with `Ctrl+C`.
 
 ## Motion
 
-The site includes staggered entrances, scroll reveals, card highlights, and an ASCII portrait with a photo toggle. Pointer tilt and hover motion run on devices with a fine pointer. Reduced-motion preferences disable animations and show the photograph by default; content and navigation also work without JavaScript.
+The site includes staggered entrances, scroll reveals, card highlights, and a detailed ASCII portrait with a photo toggle. A soft spotlight and cursor halo follow the pointer across the page and respond to links and buttons. Pointer effects run on devices with a fine pointer. Reduced-motion preferences disable animations and show the photograph by default; content and navigation also work without JavaScript.
 
 GitHub Pages should serve the root of the configured publishing branch. Changes go live after they are pushed and the Pages deployment completes.

@@ -13,7 +13,7 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 104px; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+body { margin: 0; isolation: isolate; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; }
 a, button, summary { -webkit-tap-highlight-color: transparent; }
@@ -63,7 +63,7 @@ a:hover { color: var(--accent); }
 .portrait-stage { position: relative; width: 100%; aspect-ratio: 4 / 4.6; background: var(--bg); overflow: hidden; }
 .portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; opacity: 1; transition: opacity .55s ease; }
 .portrait-card[data-mode="ascii"] .portrait-photo { opacity: 0; }
-.ascii-portrait { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; color: var(--accent); font-family: Consolas, "Courier New", monospace; font-weight: 400; white-space: pre; user-select: none; opacity: 0; transition: opacity .55s ease; }
+.ascii-portrait { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 12px; color: var(--accent); font-family: "Courier New", monospace; font-weight: 700; letter-spacing: 0; font-variant-ligatures: none; white-space: pre; user-select: none; opacity: 0; transition: opacity .55s ease; }
 .portrait-card[data-mode="ascii"] .ascii-portrait { opacity: 1; }
 .portrait-card figcaption { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 18px; border-top: 1px solid var(--line); }
 .portrait-card figcaption strong { display: block; font-size: .875rem; }
@@ -164,6 +164,12 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-block: 24px 32px; color: var(--muted); font-size: .8125rem; }
 .site-footer > span:nth-child(2) { color: var(--muted); }
 /* Motion enhances the existing layout without hiding content by default. */
+.pointer-effects { position: fixed; inset: 0; z-index: 90; overflow: clip; pointer-events: none; }
+.page-spotlight, .cursor-halo { position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.page-spotlight { z-index: -1; }
+.page-spotlight::before { position: absolute; width: 620px; height: 620px; left: -310px; top: -310px; border-radius: 50%; background: radial-gradient(circle, rgba(223,189,120,.095), rgba(223,189,120,.025) 42%, transparent 70%); content: ""; }
+.cursor-halo { z-index: 90; }
+.cursor-halo::before { position: absolute; left: -15px; top: -15px; width: 30px; height: 30px; border: 1px solid rgba(223,189,120,.45); border-radius: 50%; content: ""; transition: scale .2s ease, border-color .2s ease, background .2s ease; }
 .page-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 2px; pointer-events: none; }
 .page-progress span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: var(--accent); }
 .hero { position: relative; isolation: isolate; }
@@ -198,6 +204,8 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
   .experience-row:focus-within::before { transform: scaleX(1); }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .pointer-active .page-spotlight, .pointer-active .cursor-halo { opacity: 1; }
+  .pointer-interactive .cursor-halo::before { scale: 1.45; border-color: rgba(223,189,120,.7); background: rgba(223,189,120,.035); }
   .project-card:hover, .education-card:hover, .resume-card:hover { transform: translateY(-4px); border-color: #82704d; box-shadow: 0 16px 38px rgba(0,0,0,.15); }
   .project-card:hover::before, .education-card:hover::before, .resume-card:hover::before, .portrait-card:hover::before { opacity: 1; }
   .portrait-card { transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
@@ -210,7 +218,7 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
 @keyframes arrive { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
 @keyframes portrait-arrive { from { opacity: 0; } to { opacity: 1; } }
 @keyframes status-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(223,189,120,0); } 45% { box-shadow: 0 0 0 5px rgba(223,189,120,.1); } }
-@keyframes portrait-scan { 0% { top: 0; opacity: 0; } 8%, 88% { opacity: .55; } 100% { top: 100%; opacity: 0; } }
+@keyframes portrait-scan { 0% { transform: translateY(0); opacity: 0; } 8%, 88% { opacity: .35; } 100% { transform: translateY(var(--scan-distance, 414px)); opacity: 0; } }
 @keyframes portrait-sheen { 0% { opacity: 0; transform: translateX(-35%); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateX(35%); } }
 @media (max-width: 1000px) {
   .project-card h3 { min-height: 2.8em; }
@@ -282,10 +290,11 @@ h2 { margin-top: 12px; font-size: clamp(1.875rem, 3.4vw, 2.75rem); font-weight: 
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .portrait-stage::before, .portrait-stage::after { display: none; }
+  .page-spotlight, .cursor-halo { display: none; }
 }
 @media print {
   :root { color-scheme: light; --bg: #fff; --surface: #fff; --ink: #111; --muted: #444; --accent: #584019; --line: #ccc; }
-  .site-header, .hero-actions, .hero-socials, .portrait-toggle, .skip-link, .site-footer, .page-progress { display: none; }
+  .site-header, .hero-actions, .hero-socials, .portrait-toggle, .skip-link, .site-footer, .page-progress, .page-spotlight, .cursor-halo { display: none; }
   .motion-ready .reveal { opacity: 1; translate: none; }
   .motion-ready .hero-copy > *, .motion-ready .portrait-card { animation: none; opacity: 1; translate: none; }
   .portrait-card[data-mode="ascii"] .portrait-photo { opacity: 1; }
